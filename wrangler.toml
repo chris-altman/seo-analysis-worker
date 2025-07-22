@@ -1,0 +1,27 @@
+# wrangler.toml
+name = "seo-analysis-worker"
+main = "src/index.js"
+compatibility_date = "2024-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "seo-analysis-db"
+database_id = "a44b2103-7c7a-4b9e-9cf6-b99b017f08a9" # This will be filled when you create the D1 database
+
+# Environment variables (these will be set via wrangler secret)
+# Don't put actual API keys here - use wrangler secret put instead
+[vars]
+ENVIRONMENT = "development"
+
+# For production deployment
+[env.production]
+name = "seo-analysis-worker-prod"
+vars = { ENVIRONMENT = "production" }
+
+# KV namespaces (optional - for caching)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = ""
+# preview_id = ""
